@@ -29,7 +29,7 @@ int main(int argc, string argv[])
 
     //get plaintext from user, store in string "plntxt", then print "Ciphertext: " for later use.
     string plntxt = get_string("Enter Plaintext: ");
-    printf("Ciphertext: ");
+    printf("ciphertext: ");
 
     //create for loop to itereate over "plntxt" and store length of string as "txtlen"
     for (int j = 0, txtlen = strlen(plntxt); j < txtlen; j++)
@@ -43,22 +43,22 @@ int main(int argc, string argv[])
             {
                 if (isupper(plntxt[j]) && isupper(key[i]))
                 {
-                    printf("%c", ((plntxt[j] - 65) + (key[i] - 65) % 26 + 65));
+                    printf("%c", ((((plntxt[j] - 65) + (key[i] - 65)) % 26) + 65));
                 }
 
                 else if (isupper(plntxt[j]) && islower(key[i]))
                 {
-                    printf("%c", ((plntxt[j] - 65) + (key[i] - 97) % 26 + 65));
+                    printf("%c",((((plntxt[j] - 65) + (key[i] - 97)) % 26) + 65));
                 }
 
                 else if (islower(plntxt[j]) && isupper(key[i]))
                 {
-                    printf("%c", ((plntxt[j] - 97) + (key[i] - 65) % 26 + 97));
+                    printf("%c", ((((plntxt[j] - 97) + (key[i] - 65)) % 26) + 97));
 
                 }
                 else if (islower(plntxt[j]) && islower(key[i]))
                 {
-                    printf("%c", ((plntxt[j] - 97) + (key[i] - 97) % 26 + 97));
+                    printf("%c", ((((plntxt[j] - 97) + (key[i] - 97)) % 26) + 97));
 
                 }
             }
