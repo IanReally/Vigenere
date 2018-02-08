@@ -39,37 +39,37 @@ int main(int argc, string argv[])
         int i = (j % keylen);
 
 
-            if (isalpha (plntxt[j]))
+        if (isalpha (plntxt[j]))
+        {
+            if (isupper(plntxt[j]) && isupper(key[i]))
             {
-                if (isupper(plntxt[j]) && isupper(key[i]))
-                {
-                    printf("%c", ((((plntxt[j] - 65) + (key[i] - 65)) % 26) + 65));
-                }
-
-                else if (isupper(plntxt[j]) && islower(key[i]))
-                {
-                    printf("%c",((((plntxt[j] - 65) + (key[i] - 97)) % 26) + 65));
-                }
-
-                else if (islower(plntxt[j]) && isupper(key[i]))
-                {
-                    printf("%c", ((((plntxt[j] - 97) + (key[i] - 65)) % 26) + 97));
-
-                }
-                else if (islower(plntxt[j]) && islower(key[i]))
-                {
-                    printf("%c", ((((plntxt[j] - 97) + (key[i] - 97)) % 26) + 97));
-
-                }
+                printf("%c", ((((plntxt[j] - 65) + (key[i] - 65)) % 26) + 65));
             }
-            //print non-alphabetical characters as normal
-            else
+
+            else if (isupper(plntxt[j]) && islower(key[i]))
             {
-                printf("%c", plntxt[j]);
+                printf("%c", ((((plntxt[j] - 65) + (key[i] - 97)) % 26) + 65));
             }
+
+            else if (islower(plntxt[j]) && isupper(key[i]))
+            {
+                printf("%c", ((((plntxt[j] - 97) + (key[i] - 65)) % 26) + 97));
+
+            }
+            else if (islower(plntxt[j]) && islower(key[i]))
+            {
+                printf("%c", ((((plntxt[j] - 97) + (key[i] - 97)) % 26) + 97));
+
+            }
+        }
+        //print non-alphabetical characters as normal
+        else
+        {
+            printf("%c", plntxt[j]);
+        }
 
     }
     //print new line, end program
     printf("\n");
     return 0;
- }
+}
