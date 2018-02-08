@@ -31,34 +31,58 @@ int main(int argc, string argv[])
     string plntxt = get_string("Enter Plaintext: ");
     printf("ciphertext: ");
 
+    int i = 0;
     //create for loop to itereate over "plntxt" and store length of string as "txtlen"
     for (int j = 0, txtlen = strlen(plntxt); j < txtlen; j++)
     {
 
         int keylen = strlen(key);
-        int i = (j % keylen);
 
 
         if (isalpha (plntxt[j]))
         {
+            //if the plaintext letter and the key letter are uppercase...
             if (isupper(plntxt[j]) && isupper(key[i]))
             {
+                /*(shift plaintext to 0-indexed alphabet) + (shift key letter to 0-indexed alphabet) mod 26 to stay inside
+                0-indexed alphabet, add 65 to return back to uppercase*/
                 printf("%c", ((((plntxt[j] - 65) + (key[i] - 65)) % 26) + 65));
+                //shift i by one, if i has reached the length of the key, reset to 0
+                i++;
+                if (i == keylen)
+                {
+                    i = 0;
+                }
             }
 
             else if (isupper(plntxt[j]) && islower(key[i]))
             {
                 printf("%c", ((((plntxt[j] - 65) + (key[i] - 97)) % 26) + 65));
+                i++;
+                if (i == keylen)
+                {
+                    i = 0;
+                }
             }
 
             else if (islower(plntxt[j]) && isupper(key[i]))
             {
                 printf("%c", ((((plntxt[j] - 97) + (key[i] - 65)) % 26) + 97));
+                i++;
+                if (i == keylen)
+                {
+                    i = 0;
+                }
 
             }
             else if (islower(plntxt[j]) && islower(key[i]))
             {
                 printf("%c", ((((plntxt[j] - 97) + (key[i] - 97)) % 26) + 97));
+                i++;
+                if (i == keylen)
+                {
+                    i = 0;
+                }
 
             }
         }
